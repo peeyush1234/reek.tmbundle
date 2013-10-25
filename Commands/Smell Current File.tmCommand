@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+
+require ENV['TM_SUPPORT_PATH'] + '/lib/tm/executor'
+require ENV['TM_SUPPORT_PATH'] + '/lib/tm/save_current_document'
+
+options = {
+  :verb =&gt; 'Smelling'
+}
+
+TextMate::Executor.make_project_master_current_document
+TextMate::Executor.run(ENV['TM_REEK'] || 'reek', ENV['TM_FILEPATH'], options)
+</string>
+	<key>input</key>
+	<string>document</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>keyEquivalent</key>
+	<string>~@s</string>
+	<key>name</key>
+	<string>Smell Current File</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>uuid</key>
+	<string>2D415E1F-1696-4782-832C-5A6144537617</string>
+	<key>version</key>
+	<integer>2</integer>
+</dict>
+</plist>
